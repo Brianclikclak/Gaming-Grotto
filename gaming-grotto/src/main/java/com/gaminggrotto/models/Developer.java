@@ -19,7 +19,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "developer")
+@Table(name = "developers")
 public class Developer {
 
     @Id
@@ -36,7 +36,7 @@ public class Developer {
     private String description;
 
     @Column(nullable = true, length = 200)
-    private String websiteUrl;
+    private String website_url;
 
     @OneToMany(mappedBy = "developer")
     private List<Game> games;

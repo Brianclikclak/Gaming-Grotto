@@ -19,7 +19,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "genre")
+@Table(name = "genres")
 public class Genre {
 
     @Id
@@ -29,8 +29,8 @@ public class Genre {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(nullable = false)
-    private String iconUrl;
+    @Column(name = "icon_url", nullable = true)
+    private String icon_url;
 
     @OneToMany(mappedBy = "genre")
     private List<Game> games;

@@ -29,9 +29,6 @@ public class Platform {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(nullable = false)
-    private String logoUrl;
-
     @ManyToMany(mappedBy = "platforms")
     private List<Game> games;
 
