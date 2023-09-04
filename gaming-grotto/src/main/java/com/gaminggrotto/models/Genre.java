@@ -19,8 +19,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "developers")
-public class Developer {
+@Table(name = "genres")
+public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,15 +29,9 @@ public class Developer {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(nullable = true, length = 50)
-    private String country;
+    @Column(name = "icon_url", nullable = true)
+    private String icon_url;
 
-    @Column(nullable = true, length = 1000)
-    private String description;
-
-    @Column(nullable = true, length = 200)
-    private String website_url;
-
-    @OneToMany(mappedBy = "developer")
+    @OneToMany(mappedBy = "genre")
     private List<Game> games;
 }
