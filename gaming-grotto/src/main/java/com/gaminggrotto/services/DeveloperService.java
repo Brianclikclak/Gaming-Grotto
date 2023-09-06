@@ -35,6 +35,11 @@ public class DeveloperService implements BaseService<Developer> {
                 .orElseThrow(() -> new DeveloperNotFoundException("Developer not found whit id: " + id));
     }
 
+    public Developer findByName(String name) {
+        return developerRepository.findByName(name)
+                .orElseThrow(() -> new DeveloperNotFoundException("Developer not found whit name: " + name));
+    }
+
     @Override
     @Transactional
     public Developer save(Developer developer) {
