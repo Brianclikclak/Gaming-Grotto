@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.gaminggrotto.models.Game;
 import java.util.List;
 
-public interface GameRepositories extends JpaRepository<Game, Long> {
+public interface GameRepository extends JpaRepository<Game, Long> {
 
     Optional<Game> findByTitle(String title);
 

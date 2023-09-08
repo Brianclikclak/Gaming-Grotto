@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.gaminggrotto.models.Developer;
 
-public interface DeveloperRepositories extends JpaRepository<Developer, Long> {
+public interface DeveloperRepository extends JpaRepository<Developer, Long> {
 
     Optional<Developer> findByName(String name);
 }
