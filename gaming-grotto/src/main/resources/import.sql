@@ -1,4 +1,4 @@
-/* Géneros */
+  /* Géneros */
 INSERT INTO genres (name, icon_url) VALUES ('Accion', 'icono_accion.png');
 INSERT INTO genres (name, icon_url) VALUES ('Aventura', 'icono_aventura.png');
 
@@ -23,4 +23,4 @@ INSERT INTO game_platform (game_id, platform_id) VALUES (1, 3); -- PC
 
 -- Asociar el segundo juego ('Assassin''s Creed') con las plataformas
 INSERT INTO game_platform (game_id, platform_id) VALUES (2, 1); -- PlayStation
-INSERT INTO game_platform (game_id, platform_id) VALUES (2, 2); -- Xbox
+INSERT INTO game_platform (game_id, platform_id) VALUES (2, 2); -- Xbox 
