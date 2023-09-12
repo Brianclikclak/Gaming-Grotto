@@ -51,12 +51,12 @@ public class GameController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedGame);
     }
 
-    @PutMapping("/udpate/{id}")
+    @PutMapping("/update/{id}")
     public Game updatGame(@PathVariable Long id, @RequestBody Game gameDetails) {
         return gameService.updateGame(id, gameDetails);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteGame(@PathVariable Long id) {
         gameService.deleteById(id);
         return ResponseEntity.ok("Game deleted succesfully");
