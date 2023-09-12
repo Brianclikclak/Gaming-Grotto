@@ -2,6 +2,8 @@ package com.gaminggrotto.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,6 +40,7 @@ public class Developer {
     @Column(nullable = true, length = 200)
     private String website_url;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "developer")
     private List<Game> games;
 }
