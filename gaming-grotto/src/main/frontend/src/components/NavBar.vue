@@ -1,13 +1,17 @@
+<script setup>
+import { RouterLink } from 'vue-router';
+
+</script>
 <template>
   <header class="header-container">
-    <img
+    <RouterLink to="/"><img
       alt="Vue logo"
       class="logo"
-      src="../assets/images/logo.svg"
-    />
+      src="../assets/images/Grotto-gaming-logo.svg"
+    /></RouterLink>
     <div class="menu">
       <a href="">Explorar</a>
-      <a href="">Generos</a>
+      <RouterLink to="/category">Generos</RouterLink>
       <a href="">Plataformas</a>
       <a href="">Favoritos</a>
       <img
@@ -20,6 +24,7 @@
       <img src="../assets/images/User.svg" alt="User icon" class="user-icon" />
     </div>
   </header>
+
 </template>
 
 <style scoped lang="scss">
@@ -38,9 +43,6 @@
   align-items: center;
   justify-content: space-between;
   background: map-get(c.$colors, "dark-black");
-  position: fixed;
-  margin-bottom: -73px;
-  margin-left: -10px;
   margin-top: -10px;
   top: 0;
 
