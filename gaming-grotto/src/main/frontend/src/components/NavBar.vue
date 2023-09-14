@@ -3,7 +3,7 @@
     <img
       alt="Vue logo"
       class="logo"
-      src="../assets/images/Grotto-gaming-logo.svg"
+      src="../assets/images/logo.svg"
     />
     <div class="menu">
       <a href="">Explorar</a>
@@ -42,6 +42,7 @@
   margin-bottom: -73px;
   margin-left: -10px;
   margin-top: -10px;
+  top: 0;
 
   .menu {
     display: flex;
