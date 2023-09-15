@@ -1,5 +1,10 @@
 <script setup>
+import { onMounted, reactive } from "vue";
 import BtnShowAll from "./BtnShowAll.vue";
+
+
+
+
 </script>
 <template>
   <div class="container">
