@@ -1,13 +1,16 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 
+
+
+
 </script>
 <template>
-  <header class="header-container">
+   <header class="header-container" >
     <RouterLink to="/"><img
       alt="Vue logo"
       class="logo"
-      src="../assets/images/Grotto-gaming-logo.svg"
+      src="../assets/images/logo.svg"
     /></RouterLink>
     <div class="menu">
       <a href="">Explorar</a>
@@ -36,15 +39,21 @@ import { RouterLink } from 'vue-router';
   box-sizing: border-box;
 }
 
+
 .header-container {
   width: 100%;
   padding: 0 10px;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: map-get(c.$colors, "dark-black");
   margin-top: -10px;
-
+  top: 0;
+  z-index: 2;
+  transition: .2s; 
+  opacity: 0.9;
+  
   .menu {
     display: flex;
     align-items: center;
