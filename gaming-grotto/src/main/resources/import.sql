@@ -25,12 +25,12 @@ INSERT INTO platforms (name) VALUES ('PC');  -- 3
 INSERT INTO platforms (name) VALUES ('Nintendo Switch'); -- 4
 
 /* Juegos */
-INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('The Elder Scrolls V: Skyrim', 2011, 'Descripción del Juego 1', 'imagen_juego1.png', 1, 5);
+INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('The Elder Scrolls V: Skyrim', 2011, 'Descripción del Juego 1', 'https://gaming-cdn.com/images/products/146/380x218/the-elder-scrolls-v-skyrim-pc-juego-steam-europe-cover.jpg?v=1661270991', 1, 5);
 INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Assassins Creed Valhala', 2021, 'Descripción del Juego 2', 'imagen_juego2.png', 2, 5);
 INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('The Witcher 3: Wild Hunt', 2023, 'Descripción de The Witcher 3', 'imagen_witcher3.png', 4, 5);
 INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Ratchet and Clank: Rift Apart', 2023, 'Descripción de Ratchet and Clank', 'imagen_ratchet_clank.png', 4, 6);
 INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('FIFA 23', 2023, 'Descripción de FIFA 23', 'imagen_fifa23.png', 5, 7);
-INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Starfield', 2023, 'Descripción de Starfield', 'imagen_starfield.png', 1, 5);
+INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Starfield', 2023, 'Descripción de Starfield', 'https://gaming-cdn.com/images/products/2675/380x218/starfield-pc-juego-steam-cover.jpg?v=1694782800', 1, 5);
 INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Fortnite', 2017, 'Descripción de Fortnite', 'imagen_fortnite.png', 6, 8);
 INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Rocket League', 2015, 'Descripción de Rocket League', 'imagen_rocketleague.png', 7, 7);
 
