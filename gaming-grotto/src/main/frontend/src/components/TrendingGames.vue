@@ -1,44 +1,37 @@
 <script setup>
 import BtnShowAll from "./BtnShowAll.vue";
+import { ref, onMounted } from "vue";
+import GameDataService from "../services/GameDataService";
+
+const games = ref("");
+
+onMounted(async () => {
+  try {
+    const response = await GameDataService.get("api/games"); // Reemplaza '6' con el ID del juego que deseas obtener
+    games.value = response.data; // Almacenamos todos los datos del juego en gameData
+    console.log(games.value);
+  } catch (error) {
+    console.error("Error al cargar los juegos:", error);
+  }
+});
 </script>
 
 <template>
-    <div class="main-container">
-      <div class="container-header">
-        <h3 class="container-header__title">Tendencias</h3>
-        <BtnShowAll />
-      </div>
-      <div class="genres-container">
-        <div class="genres-container__action">
-          <p>Accion</p>
-        </div>
-        <div class="genres-container__action">
-          <p>Aventura</p>
-        </div>
-        <div class="genres-container__action">
-          <p>Disparos</p>
-        </div>
-        <div class="genres-container__action">
-          <p>RPG</p>
-        </div>
-        <div class="genres-container__action">
-          <p>RPG</p>
-        </div>
-        <div class="genres-container__action">
-          <p>RPG</p>
-        </div>
-        <div class="genres-container__action">
-        <p>RPG</p>
-      </div>
-      <div class="genres-container__action">
-        <p>RPG</p>
-      </div>
-      <div class="genres-container__action">
-        <p>RPG</p>
-      </div>
+  <div class="main-container">
+    <div class="container-header">
+      <h3 class="container-header__title">Tendencias</h3>
+      <BtnShowAll />
+    </div>
+    <div class="genres-container">
+      <!-- Recorremos la lista de juegos y creamos un contenedor para cada uno -->
+      <div v-for="game in games" :key="game.id" class="genres-container__action">
+        <img class="image-game" :src="game.image" alt="">
+        <p>{{ game.title }}</p>
+        <p>{{ game.genre.name }}</p>
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
 
 <style scoped lang="scss">
@@ -76,10 +69,7 @@ import BtnShowAll from "./BtnShowAll.vue";
     }
 
     .genres-container__action{
-        
-        
         text-align: center;
-        line-height: 15em;
         border: solid 1px black;
         margin-bottom: 3em;
         background-color: map-get(c.$colors, "gray-text" );
@@ -88,6 +78,10 @@ import BtnShowAll from "./BtnShowAll.vue";
         
         
         
+    }
+
+    .image-game{
+      width: 100%;
     }
 
       @media screen and (max-width: 768px) {
