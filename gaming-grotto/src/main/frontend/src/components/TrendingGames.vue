@@ -1,70 +1,109 @@
-<script>
-import BtnShowAll from './BtnShowAll.vue';
+<script setup>
+import BtnShowAll from "./BtnShowAll.vue";
 </script>
 
 <template>
-    <div class="container-header">
-        <h3 class="container-header__title">Tendecias</h3>
-        <BtnShowAll/>Ver todo
+    <div class="main-container">
+      <div class="container-header">
+        <h3 class="container-header__title">Tendencias</h3>
+        <BtnShowAll />
+      </div>
+      <div class="genres-container">
+        <div class="genres-container__action">
+          <p>Accion</p>
+        </div>
+        <div class="genres-container__action">
+          <p>Aventura</p>
+        </div>
+        <div class="genres-container__action">
+          <p>Disparos</p>
+        </div>
+        <div class="genres-container__action">
+          <p>RPG</p>
+        </div>
+        <div class="genres-container__action">
+          <p>RPG</p>
+        </div>
+        <div class="genres-container__action">
+          <p>RPG</p>
+        </div>
+        <div class="genres-container__action">
+        <p>RPG</p>
+      </div>
+      <div class="genres-container__action">
+        <p>RPG</p>
+      </div>
+      <div class="genres-container__action">
+        <p>RPG</p>
+      </div>
+      </div>
     </div>
-    <div class="genres-container">
-        <div class="genres-container__action">
-        <p>Accion</p>
-        </div>
-        <div class="genres-container__action">
-        <p>Aventura</p>
-        </div>
-        <div class="genres-container__action">
-        <p>Disparos</p>
-        </div>
-        <div class="genres-container__action">
-        <p>RPG</p>
-        </div>
-        <div class="genres-container__action">
-        <p>RPG</p>
-        </div>
-        <div class="genres-container__action">
-        <p>RPG</p>
-        </div>
-    </div>
-</template>
+  </template>
+  
 
 <style scoped lang="scss">
 @use '../scss/colors' as c;
 
+.main-container{
+  background-color: map-get(c.$colors, "dark-gray");
+}
     .container-header{
         display: flex;
         justify-content: space-around;
         padding: 2em;
-        gap: 45em;
         background-color: map-get(c.$colors, "dark-gray");
+        color: map-get(c.$colors, "white" );
 
         .container-header__title{
             font-size: 30px;
+            margin-right: auto;
         }
     }
 
     .genres-container{
         background-color: map-get(c.$colors, "dark-gray");
-        margin: -15px;
         display: flex;
-        position: relative;
+        /* position: relative; */
         justify-content: center;
-        flex-wrap: wrap;
+        flex-wrap: wrap; 
         gap: 1em;
+        width: 70%;
+        margin: auto;
+        justify-content: space-between;
+        
+        
         
     }
 
     .genres-container__action{
-        width: 25em;
-        height: 15em;
+        
+        
         text-align: center;
-        background-color: blue;
         line-height: 15em;
         border: solid 1px black;
-        margin-bottom: 4em;
+        margin-bottom: 3em;
         background-color: map-get(c.$colors, "gray-text" );
+        border-radius: 10px;
+        flex: 0 calc(33.33% - 1em); /* 3 contenedores por fila */
+        
+        
+        
     }
+
+      @media screen and (max-width: 768px) {
+      .genres-container__action {
+      flex: 0 calc(100% - 2em); 
+      margin: auto;
+      flex-wrap: nowrap;
+    }
+    
+
+      
+    
+    }
+
+    
+
 
     
 </style>

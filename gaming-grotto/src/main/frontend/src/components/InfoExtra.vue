@@ -1,15 +1,13 @@
 <template>
   <div class="container-info">
     <div class="container-info__img">
-      <img src="../assets/images/gamecontroller.svg" alt="Grotto-Gaming" />
+      <img class="controller-img" src="../assets/images/gamecontroller.svg" alt="Grotto-Gaming" />
     </div>
-    <span>
       <p class="container-info__text">
         Grotto Gaming es una excelente forma de descrubir y encontrar juegos que
         no conocias. Cuentas con la información de todos ellos para darles una
         oportunidad mas adelante.
       </p>
-    </span>
   </div>
 </template>
 
@@ -17,18 +15,24 @@
 @use "../scss/colors" as c;
 .container-info{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  background-color: map-get(c.$colors, "dark-gray");
-  gap: 1em;
+  background-color: map-get(c.$colors, "light-black");
+  margin: auto;
+  align-items: center;
 }
 .container-info__img{
-  width: 18em;
+  width: 15em;
+}
+.controller-img{
+  width: 13em;
+  height: 17em;
 }
 
 .container-info__text{
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
   color: map-get(c.$colors, "gray-text" );
-  margin-top: 3.5em;
+  width: 40%;
 }
 </style>

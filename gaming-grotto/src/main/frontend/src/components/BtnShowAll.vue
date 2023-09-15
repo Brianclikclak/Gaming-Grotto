@@ -5,8 +5,17 @@
 @use '../scss/colors' as c;
 
 .btn-show-all{
-    width: 20em;
     color: map-get(c.$colors, "white");
-    height: 3em;
+    background-color: map-get(c.$colors, "dark-gray");
+    border-radius: 10px;
+    border: 2px solid map-get(c.$colors, "gray-text" ); 
+    font-size: 15px;
+    height: 40px;
+    padding: 0 15px;
+    &:hover{
+        background-color: map-get(c.$colors, "main-orange");
+        cursor: pointer;
+        border: 2px solid map-get(c.$colors, "white" ); 
+    }
 }
 </style>

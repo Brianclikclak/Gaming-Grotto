@@ -1,26 +1,29 @@
-<script setup>
+<script>
 </script>
+
 <template>
+    
     <div class="game-container">
-        <h2>JUEGO DESTACADO</h2>
+        <h2 class="game-container__title">
+            Juego destacado
+        </h2>
     </div>
+    
 </template>
 
-<style lang="scss" scoped>
-    *{
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
+<style scope lang="scss">
+    @use "../scss/colors" as c;
+
     .game-container{
-        margin-top: 5em;
         width: 100%;
         height: 20em;
-        background: gray;
+        background-color: map-get(c.$colors, "gray-text" );
     }
-    h2{
-        color: white;
+
+    .game-container__title{
         text-align: center;
-        line-height: 13em;
+        line-height: 15em;
+        color: map-get(c.$colors, "white" );
     }
+
 </style>
