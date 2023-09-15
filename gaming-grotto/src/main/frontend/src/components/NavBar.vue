@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router';
 
 </script>
 <template>
-   <header class="header-container" :class="{ fixed: isHeaderFixed }" ref="headerRef">
+   <header class="header-container" >
     <RouterLink to="/"><img
       alt="Vue logo"
       class="logo"
