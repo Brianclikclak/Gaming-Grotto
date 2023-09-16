@@ -33,11 +33,7 @@ import { RouterLink } from 'vue-router';
 <style scoped lang="scss">
 @use "@/scss/colors" as c;
 @use "@/scss/mixins" as m;
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+
 
 
 .header-container {

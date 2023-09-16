@@ -1,12 +1,13 @@
   /* Géneros */
-INSERT INTO genres (name, icon_url) VALUES ('Accion', 'icono_accion.png');  -- 1
-INSERT INTO genres (name, icon_url) VALUES ('Aventura', 'icono_aventura.png'); -- 2
-INSERT INTO genres (name, icon_url) VALUES ('Shooter', 'icono_aventura.png'); -- 3
-INSERT INTO genres (name, icon_url) VALUES ('Lucha', 'icono_aventura.png'); -- 4
-INSERT INTO genres (name, icon_url) VALUES ('RPG', 'icono_aventura.png'); -- 5
-INSERT INTO genres (name, icon_url) VALUES ('Plataformas', 'icono_plataformas.png'); -- 6
-INSERT INTO genres (name, icon_url) VALUES ('Deportes', 'icono_aventura.png'); -- 7
-INSERT INTO genres (name, icon_url) VALUES ('Battle Royale', 'icono_battle_royale.png'); -- 8
+INSERT INTO genres (name, icon_url) VALUES ('Accion', 'https://www.instant-gaming.com/themes/igv2/modules/categoryMenu/images/category-background1.jpg');  -- 1
+INSERT INTO genres (name, icon_url) VALUES ('Aventura', 'https://www.instant-gaming.com/themes/igv2/modules/categoryMenu/images/category-background4.jpg'); -- 2
+INSERT INTO genres (name, icon_url) VALUES ('Shooter', 'https://www.instant-gaming.com/themes/igv2/modules/categoryMenu/images/category-background9.jpg'); -- 3
+INSERT INTO genres (name, icon_url) VALUES ('Lucha', 'https://www.instant-gaming.com/themes/igv2/modules/categoryMenu/images/category-background7.jpg'); -- 4
+INSERT INTO genres (name, icon_url) VALUES ('RPG', 'https://www.instant-gaming.com/themes/igv2/modules/categoryMenu/images/category-background12.jpg'); -- 5
+INSERT INTO genres (name, icon_url) VALUES ('Plataformas', 'https://www.instant-gaming.com/themes/igv2/modules/categoryMenu/images/category-background2.jpg'); -- 6
+INSERT INTO genres (name, icon_url) VALUES ('Deportes', 'https://www.instant-gaming.com/themes/igv2/modules/categoryMenu/images/category-background16.jpg'); -- 7
+INSERT INTO genres (name, icon_url) VALUES ('Battle Royale', 'https://www.instant-gaming.com/themes/igv2/modules/categoryMenu/images/category-background35.jpg'); -- 8
+INSERT INTO genres (name, icon_url) VALUES ('Carreras', 'https://www.instant-gaming.com/themes/igv2/modules/categoryMenu/images/category-background8.jpg' ) -- 9
 
 /* Desarrolladores */
 INSERT INTO developers (name, country, description, website_url) VALUES ('Bethesda', 'EE. UU.', 'Descripción de Bethesda', 'https://www.bethesda.net'); -- 1
@@ -16,7 +17,7 @@ INSERT INTO developers (name, country, description, website_url) VALUES ('Insomn
 INSERT INTO developers (name, country, description, website_url) VALUES ('EA Sports', 'EE. UU.', 'Descripción de EA Sports', 'https://www.ea.com/sports'); -- 5
 INSERT INTO developers (name, country, description, website_url) VALUES ('Epic Games', 'EE. UU.', 'Descripción de Epic Games', 'https://www.epicgames.com'); -- 6
 INSERT INTO developers (name, country, description, website_url) VALUES ('Psyonix', 'EE. UU.', 'Descripción de Psyonix', 'https://www.psyonix.com'); -- 7
-
+INSERT INTO developers (name, country, description, website_url) VALUES ('Rockstar', 'EE. UU.', 'Descripción de Rockstar', 'https://www.rockstargames.com'); -- 8
 
 /* Plataformas */
 INSERT INTO platforms (name) VALUES ('PlayStation'); -- 1
@@ -26,13 +27,15 @@ INSERT INTO platforms (name) VALUES ('Nintendo Switch'); -- 4
 
 /* Juegos */
 INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('The Elder Scrolls V: Skyrim', 2011, 'Descripción del Juego 1', 'https://gaming-cdn.com/images/products/146/380x218/the-elder-scrolls-v-skyrim-pc-juego-steam-europe-cover.jpg?v=1661270991', 1, 5);
-INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Assassins Creed Valhala', 2021, 'Descripción del Juego 2', 'imagen_juego2.png', 2, 5);
-INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('The Witcher 3: Wild Hunt', 2023, 'Descripción de The Witcher 3', 'imagen_witcher3.png', 4, 5);
-INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Ratchet and Clank: Rift Apart', 2023, 'Descripción de Ratchet and Clank', 'imagen_ratchet_clank.png', 4, 6);
-INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('FIFA 23', 2023, 'Descripción de FIFA 23', 'imagen_fifa23.png', 5, 7);
+INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Assassins Creed Valhala', 2021, 'Descripción del Juego 2', 'https://www.instant-gaming.com/images/products/6147/380x218/6147.jpg?v=1650550345', 2, 5);
+INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('The Witcher 3: Wild Hunt', 2023, 'Descripción de The Witcher 3', 'https://www.instant-gaming.com/images/products/268/380x218/268.jpg?v=1650526691', 4, 5);
+INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Ratchet and Clank: Rift Apart', 2023, 'Descripción de Ratchet and Clank', 'https://www.instant-gaming.com/images/products/9665/380x218/9665.jpg?v=1690357205', 4, 6);
+INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('FIFA 23', 2023, 'Descripción de FIFA 23', 'https://www.instant-gaming.com/images/products/10545/380x218/10545.jpg?v=1665157647', 5, 7);
 INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Starfield', 2023, 'Descripción de Starfield', 'https://gaming-cdn.com/images/products/2675/380x218/starfield-pc-juego-steam-cover.jpg?v=1694782800', 1, 5);
-INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Fortnite', 2017, 'Descripción de Fortnite', 'imagen_fortnite.png', 6, 8);
-INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Rocket League', 2015, 'Descripción de Rocket League', 'imagen_rocketleague.png', 7, 7);
+INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Fortnite', 2017, 'Descripción de Fortnite', 'https://gaming-cdn.com/images/products/2500/380x218/fortnite-pc-juego-epic-games-cover.jpg?v=1645021449', 6, 8);
+INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Rocket League', 2015, 'Descripción de Rocket League', 'https://www.instant-gaming.com/images/products/670/380x218/670.jpg?v=1644693795', 7, 9);
+INSERT INTO games (title, release_year, description, image, developer_id, genre_id) VALUES ('Red Dead Redemption II', 2015, 'Descripción de Red Dead Redemption II ', 'https://www.instant-gaming.com/images/products/5679/380x218/5679.jpg?v=1647026658', 8, 3);
+
 
 
 -- Asociar  'The Elder Scrolls V: Skyrim' con las plataformas
@@ -77,4 +80,9 @@ INSERT INTO game_platform (game_id, platform_id) VALUES (8, 1); -- PlayStation
 INSERT INTO game_platform (game_id, platform_id) VALUES (8, 2); -- Xbox
 INSERT INTO game_platform (game_id, platform_id) VALUES (8, 3); -- PC
 INSERT INTO game_platform (game_id, platform_id) VALUES (8, 4); -- Nintendo Switch
+
+-- Asociar 'Red Dead Redemption 2' con las plataformas
+INSERT INTO game_platform (game_id, platform_id) VALUES (INSERTA_EL_ID_DEL_JUEGO_REDEMPTION_2, 1); -- PlayStation
+INSERT INTO game_platform (game_id, platform_id) VALUES (INSERTA_EL_ID_DEL_JUEGO_REDEMPTION_2, 2); -- Xbox
+INSERT INTO game_platform (game_id, platform_id) VALUES (INSERTA_EL_ID_DEL_JUEGO_REDEMPTION_2, 3); -- PC
 
