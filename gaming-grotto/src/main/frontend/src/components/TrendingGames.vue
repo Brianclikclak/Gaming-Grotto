@@ -1,13 +1,23 @@
 <script setup>
 import BtnShowAll from "./BtnShowAll.vue";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, defineEmits } from "vue";
 import GameDataService from "../services/GameDataService";
+import { useRouter } from "vue-router";
 
-const games = ref("");
+const games = ref([]);
+
+const router = useRouter();
+
+const  emit  = defineEmits();
+const showGameDetails = (game) => {
+  emit("show-details", game);
+
+  router.push({ name: "GameDetails", params: { id: game.id } });
+};
 
 onMounted(async () => {
   try {
-    const response = await GameDataService.get("api/games"); 
+    const response = await GameDataService.get("api/games");
     games.value = response.data;
     console.log(games.value);
   } catch (error) {
@@ -27,12 +37,12 @@ onMounted(async () => {
         v-for="game in games"
         :key="game.id"
         class="genres-container__action"
+        @click="showGameDetails(game)"
       >
         <img class="image-game" :src="game.image" alt="" />
         <p class="game-title">{{ game.title }}</p>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -41,6 +51,8 @@ onMounted(async () => {
 
 .main-container {
   background-color: map-get(c.$colors, "dark-gray");
+  display: flex;
+  flex-direction: column;
 }
 .container-header {
   display: flex;
@@ -48,6 +60,8 @@ onMounted(async () => {
   padding: 2em;
   background-color: map-get(c.$colors, "dark-gray");
   color: map-get(c.$colors, "white");
+  width: 74%;
+  align-self: center;
 
   .container-header__title {
     font-size: 30px;
@@ -76,6 +90,9 @@ onMounted(async () => {
   border-radius: 10px;
   flex: 0 calc(33.33% - 1em);
   padding-bottom: 2em;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .image-game {
@@ -90,4 +107,3 @@ onMounted(async () => {
   }
 }
 </style>
-
