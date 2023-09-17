@@ -36,6 +36,7 @@ onMounted(async () => {
   
   .main-container {
     background-color: map-get(c.$colors, "dark-gray");
+    margin-top: 4.5em;
   }
   .container-header {
     display: flex;
