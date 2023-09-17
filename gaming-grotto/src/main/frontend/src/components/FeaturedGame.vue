@@ -36,6 +36,7 @@ onMounted(async () => {
 .game-container {
   width: 100%;
   margin-top: 4.5em;
+  background-color: map-get(c.$colors, "dark-gray");
 }
 .game-image {
     width: 100%;
