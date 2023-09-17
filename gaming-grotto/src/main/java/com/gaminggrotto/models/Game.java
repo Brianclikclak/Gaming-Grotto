@@ -35,7 +35,7 @@ public class Game {
     @Column(nullable = true)
     private Integer releaseYear;
 
-    @Column(nullable = true)
+    @Column(nullable = true, length = 1000)
     private String description;
 
     @Column(nullable = true)
