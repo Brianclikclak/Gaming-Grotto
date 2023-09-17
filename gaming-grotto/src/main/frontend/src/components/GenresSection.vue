@@ -4,12 +4,15 @@ import { ref, onMounted } from "vue";
 import GameDataService from "../services/GameDataService";
 
 const genres = ref("");
+const genresFirstSix = ref("");
 
 onMounted(async () => {
   try {
     const response = await GameDataService.get("api/genres"); // Reemplaza '6' con el ID del juego que deseas obtener
     genres.value = response.data; // Almacenamos todos los datos del juego en gameData
+    genresFirstSix.value = genres.value.slice(0, 6);
     console.log(genres.value);
+    console.log(genresFirstSix.value);
   } catch (error) {
     console.error("Error al cargar los juegos:", error);
   }
@@ -23,7 +26,7 @@ onMounted(async () => {
         <BtnShowAll />
       </div>
       <div class="genres-container">
-        <div v-for="genre in genres" :key="genre.id" class="genres-container__action">
+        <div v-for="genre in genresFirstSix" :key="genre.id" class="genres-container__action">
           <img class="image-game" :src="genre.icon_url" alt="" />
           <div class="genre-name">{{ genre.name }}</div>
         </div>
