@@ -75,22 +75,25 @@
     text-align: center;
 
     img {
-      width: 3vw;
+      width: 2vw;
     }
   }
 
-  @media screen and (max-width: 768px) {
+  
+
+  
+}
+
+@media screen and (max-width: 768px) {
     .main-container {
       gap: 1em;
       padding: 0;
     }
     .container__text {
       h4 {
-        color: map-get(c.$colors, "white");
-        font-size: 0.7em;
+        font-size: 1.5em;
       }
       p {
-        color: map-get(c.$colors, "gray-text");
         font-size: 0.2em;
       }
       img {
@@ -103,19 +106,19 @@
       }
     }
   }
+@media screen and (max-width: 600px) {
 
-  @media screen and (max-width: 600px) {
-    .container__text {
-      h4 {
-        color: map-get(c.$colors, "white");
-        font-size: 0.7em;
-      }
-      p {
-        color: map-get(c.$colors, "gray-text");
-        font-size: 0.2em;
-      }
+    .main-container{
+      gap: 0;
     }
+.container__text {
+  h4 {
+    font-size: 0.5em;
   }
+  p {
+    font-size: 0.2em;
+  }
+}
 }
 </style>
 

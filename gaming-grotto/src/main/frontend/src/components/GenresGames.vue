@@ -20,7 +20,6 @@ onMounted(async () => {
     <div class="main-container">
       <div class="container-header">
         <h3 class="container-header__title">Categorias</h3>
-        <BtnShowAll />
       </div>
       <div class="genres-container">
         <div v-for="genre in genres" :key="genre.id" class="genres-container__action">
@@ -44,6 +43,8 @@ onMounted(async () => {
     padding: 2em;
     background-color: map-get(c.$colors, "dark-gray");
     color: map-get(c.$colors, "white");
+    width: 73%;
+    margin: auto;
   
     .container-header__title {
       font-size: 30px;
@@ -63,27 +64,26 @@ onMounted(async () => {
   
   .genres-container__action {
     text-align: center;
-    border: solid 1px black;
     margin-bottom: 3em;
-    border: 2px solid;
-    border-radius: 10px;
     flex: 0 calc(33.33% - 1em);
     position: relative; 
   
     .image-game {
       width: 100%;
       opacity: 0.6;
+      border-radius: 20px;
     }
   
     .genre-name {
-        font-size: 25px;
+      font-size: 25px;
       color: map-get(c.$colors, "white");
       position: absolute; 
       top: 50%; 
       left: 50%; 
       transform: translate(-50%, -50%); 
-      background-color: rgba(0, 0, 0, 0.7); 
-      padding: 0.5em; 
+      background-color: rgba(0, 0, 0, 0.6); 
+      padding: 0.5em;
+      border-radius: 10px;
     }
   }
   

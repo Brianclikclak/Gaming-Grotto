@@ -43,6 +43,7 @@ onMounted(async () => {
         <p class="game-title">{{ game.title }}</p>
       </div>
     </div>
+    <img src="../assets/images/games-images/starfield-stretch.jpg" alt="">
   </div>
 </template>
 
@@ -82,6 +83,7 @@ onMounted(async () => {
   .game-title {
     color: map-get(c.$colors, "white");
     font-size: 25px;
+    padding-top: 0.5em;
   }
 }
 
@@ -97,6 +99,7 @@ onMounted(async () => {
 
 .image-game {
   width: 100%;
+  border-radius: 20px;
 }
 
 @media screen and (max-width: 768px) {

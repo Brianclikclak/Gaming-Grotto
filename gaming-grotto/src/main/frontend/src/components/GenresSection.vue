@@ -23,7 +23,7 @@ onMounted(async () => {
     <div class="main-container">
       <div class="container-header">
         <h3 class="container-header__title">Categorias</h3>
-        <BtnShowAll />
+       <RouterLink to="/category"> <BtnShowAll /></RouterLink>
       </div>
       <div class="genres-container">
         <div v-for="genre in genresFirstSix" :key="genre.id" class="genres-container__action">
@@ -39,11 +39,15 @@ onMounted(async () => {
   
   .main-container {
     background-color: map-get(c.$colors, "dark-gray");
+    display: flex;
+    flex-direction: column;
   }
   .container-header {
     display: flex;
     justify-content: space-around;
     padding: 2em;
+    width: 74%;
+    align-self: center;
     background-color: map-get(c.$colors, "dark-gray");
     color: map-get(c.$colors, "white");
   
@@ -65,16 +69,14 @@ onMounted(async () => {
   
   .genres-container__action {
     text-align: center;
-    border: solid 1px black;
     margin-bottom: 3em;
-    border: 2px solid;
-    border-radius: 10px;
     flex: 0 calc(33.33% - 1em);
     position: relative; 
   
     .image-game {
       width: 100%;
       opacity: 0.6;
+      border-radius: 20px;
     }
   
     .genre-name {
