@@ -13,7 +13,7 @@ import { RouterLink } from 'vue-router';
       src="../assets/images/image 3.svg"
     /></RouterLink>
     <div class="menu">
-      <a href="">Explorar</a>
+      <RouterLink to="/explore">Juegos</RouterLink>
       <RouterLink to="/category">Generos</RouterLink>
       <a href="">Plataformas</a>
       <a href="">Favoritos</a>
@@ -46,7 +46,7 @@ import { RouterLink } from 'vue-router';
   background: map-get(c.$colors, "dark-black");
   margin-top: -10px;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   transition: .2s; 
   opacity: 0.9;
   

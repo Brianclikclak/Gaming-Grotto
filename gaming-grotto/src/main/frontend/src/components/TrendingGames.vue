@@ -5,6 +5,7 @@ import GameDataService from "../services/GameDataService";
 import { useRouter } from "vue-router";
 
 const games = ref([]);
+const gamesFirstSix = ref("");
 
 const router = useRouter();
 
@@ -19,6 +20,7 @@ onMounted(async () => {
   try {
     const response = await GameDataService.get("api/games");
     games.value = response.data;
+    gamesFirstSix.value = games.value.slice(0, 6);
     console.log(games.value);
   } catch (error) {
     console.error("Error al cargar los juegos:", error);
@@ -34,7 +36,7 @@ onMounted(async () => {
     </div>
     <div class="genres-container">
       <div
-        v-for="game in games"
+        v-for="game in gamesFirstSix"
         :key="game.id"
         class="genres-container__action"
         @click="showGameDetails(game)"
