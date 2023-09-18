@@ -41,6 +41,9 @@ public class Game {
     @Column(nullable = true)
     private String image;
 
+    @Column(nullable = true)
+    private String back_image;
+
     @ManyToOne
     private Developer developer;
 
