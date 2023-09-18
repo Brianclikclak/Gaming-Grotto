@@ -25,74 +25,83 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="main">
-      <NavBar />
-      <div
-        class="details-container"
-        v-if="gameDetails && Object.keys(gameDetails).length > 0"
-      >
-        <img class="game-img" :src="gameDetails.image" alt="Game Image" />
-        <div class="game-info">
-          <h2 class="game-title">{{ gameDetails.title }}</h2>
-          <p class="game-year">
-            Año de lanzamiento: <span>{{ gameDetails.releaseYear }}</span>
-          </p>
-          <p class="game-genre">
-            Genero: <span>{{ gameDetails.genre.name }}</span>
-          </p>
-          <p class="game-developer">
-            Desarrolladora: <span class="">{{ gameDetails.developer.name }}</span>
-          </p>
-          <div class="game-platforms">
-            <p>Plataformas:</p>
-            <span
-              class="game-platform__text"
-              v-for="platform in gameDetails.platforms"
-              :key="platform.id"
-            >
-              {{ platform.name }}</span
-            >
-          </div>
+  <div class="main">
+    <NavBar />
+    <div
+      class="details-container"
+      v-if="gameDetails && Object.keys(gameDetails).length > 0"
+    >
+      <img class="back-image" :src="gameDetails.back_image" alt="" />
+      <img class="game-img" :src="gameDetails.image" alt="Game Image" />
+      <div class="game-info">
+        <h2 class="game-title">{{ gameDetails.title }}</h2>
+
+        <p class="game-year">
+          Año de lanzamiento: <span>{{ gameDetails.releaseYear }}</span>
+        </p>
+        <p class="game-genre">
+          Genero: <span>{{ gameDetails.genre.name }}</span>
+        </p>
+        <p class="game-developer">
+          Desarrolladora: <span class="">{{ gameDetails.developer.name }}</span>
+        </p>
+        <div class="game-platforms">
+          <p>Plataformas:</p>
+          <span
+            class="game-platform__names"
+            v-for="platform in gameDetails.platforms"
+            :key="platform.id"
+          >
+            {{ platform.name }}</span
+          >
         </div>
       </div>
-      <div class="about-container">
-        <h2 class="about-container__title">Acerca del juego</h2>
-        <p class="about-container__description">{{ gameDetails.description }}</p>
-      </div>
     </div>
-  </template>
-  
-
+    <div class="about-container">
+      <h2 class="about-container__title">Acerca del juego</h2>
+      <p class="about-container__description">{{ gameDetails.description }}</p>
+    </div>
+  </div>
+</template>
 
 <style scoped lang="scss">
 @use "../scss/colors" as c;
 
-.main{
-    background-color: map-get(c.$colors, "dark-gray");
-    height: 100vh;
+.main {
+  background-color: map-get(c.$colors, "dark-black");
+}
+.back-image {
+  width: 100%;
+  position: absolute;
+  opacity: 0.7;
+  top: 4.5em;
+  height: 63vh;
 }
 .details-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: map-get(c.$colors, "dark-gray");
   background-size: cover;
-
   margin-top: 4.6em;
   gap: 5em;
-  width: 100%;
-  padding: 5em 0em;
+  padding-top: 20em;
+  padding-bottom: 5em;
 }
 .game-img {
-  width: 35em;
+  width: 36em;
   border: 4px solid map-get(c.$colors, "main-orange");
   border-radius: 20px;
+  z-index: 2;
 }
 
 .game-info {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  backdrop-filter: blur(80px) saturate(30%);
+  border-radius: 20px;
+  padding: 0 1em;
+  z-index: 2;
 
   .game-title {
     color: map-get(c.$colors, "white");
@@ -102,39 +111,61 @@ onMounted(async () => {
   .game-genre,
   .game-developer,
   .game-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em;
     font-size: 2em;
-    color: map-get(c.$colors, "gray-text");
+    color: map-get(c.$colors, "main-orange");
+    .game-platform__names,
     span {
       color: map-get(c.$colors, "white");
+      font-size: 1em;
     }
-  }
-  .game-platforms {
-    display: flex;
-    gap: 0.3em;
   }
 }
 
 .about-container {
   display: flex;
   flex-direction: column;
-  background-color: map-get(c.$colors, "dark-black");
   padding-top: 4em;
-  height: 50vh;
+  padding-bottom: 4em;
 
   .about-container__title {
     font-size: 4em;
-    width: 89%;
+    width: 71%;
     color: map-get(c.$colors, "white");
     margin: auto;
   }
 
   .about-container__description {
-    text-align: center;
     font-size: 1.5em;
     padding-top: 2em;
     color: map-get(c.$colors, "gray-text");
     width: 70%;
     margin: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .details-container {
+    padding-top: 3em;
+  }
+  .back-image {
+    display: none;
+  }
+  .game-info {
+    width: 100%;
+    .game-year,
+    .game-genre,
+    .game-developer,
+    .game-platforms {
+      display: flex;
+      flex-direction: column;
+      font-size: 2.5em;
+    }
+  }
+  .game-img {
+    width: 100%;
   }
 }
 </style>
