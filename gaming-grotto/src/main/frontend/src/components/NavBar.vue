@@ -10,7 +10,7 @@ import { RouterLink } from 'vue-router';
     <RouterLink to="/"><img
       alt="Vue logo"
       class="logo"
-      src="../assets/images/logo.svg"
+      src="../assets/images/image 3.svg"
     /></RouterLink>
     <div class="menu">
       <a href="">Explorar</a>
@@ -57,6 +57,7 @@ import { RouterLink } from 'vue-router';
     left: 35%;
     justify-content: space-around;
     gap: 4em;
+    font-size: 1.2em;
 
     a {
       text-decoration: none;
