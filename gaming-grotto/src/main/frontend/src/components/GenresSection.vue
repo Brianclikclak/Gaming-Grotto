@@ -88,6 +88,7 @@ onMounted(async () => {
       transform: translate(-50%, -50%); 
       background-color: rgba(0, 0, 0, 0.7); 
       padding: 0.5em; 
+      border-radius: 10px;
     }
   }
   

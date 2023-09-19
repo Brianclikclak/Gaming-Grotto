@@ -1,11 +1,10 @@
 <script setup>
-import BtnShowAll from "./BtnShowAll.vue";
 import { ref, onMounted, defineEmits } from "vue";
 import GameDataService from "../services/GameDataService";
 import { useRouter } from "vue-router";
+import NavBar from "../components/NavBar.vue";
 
 const games = ref([]);
-const gamesFirstSix = ref("");
 
 const router = useRouter();
 
@@ -20,7 +19,6 @@ onMounted(async () => {
   try {
     const response = await GameDataService.get("api/games");
     games.value = response.data;
-    gamesFirstSix.value = games.value.slice(0, 6);
     console.log(games.value);
   } catch (error) {
     console.error("Error al cargar los juegos:", error);
@@ -29,25 +27,28 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="main-container">
-    <div class="container-header">
-      <h3 class="container-header__title">Tendencias</h3>
-      <BtnShowAll />
-    </div>
-    <div class="genres-container">
-      <div
-        v-for="game in gamesFirstSix"
-        :key="game.id"
-        class="genres-container__action"
-        @click="showGameDetails(game)"
-      >
-        <img class="image-game" :src="game.image" alt="" />
-        <p class="game-title">{{ game.title }}</p>
+    <div>
+      <NavBar />
+      <div class="main-container">
+        <div class="container-header">
+          <h3 class="container-header__title">Juegos</h3>
+          <BtnShowAll />
+        </div>
+        <div class="genres-container">
+          <div
+            v-for="game in games"
+            :key="game.id"
+            class="genres-container__action"
+            @click="showGameDetails(game)"
+          >
+            <img class="image-game" :src="game.image" alt="" />
+            <p class="game-title">{{ game.title }}</p>
+          </div>
+        </div>
       </div>
     </div>
-    <img src="../assets/images/games-images/starfield-stretch.jpg" alt="">
-  </div>
-</template>
+  </template>
+  
 
 <style scoped lang="scss">
 @use "../scss/colors" as c;
@@ -56,6 +57,7 @@ onMounted(async () => {
   background-color: map-get(c.$colors, "dark-gray");
   display: flex;
   flex-direction: column;
+  padding-top: 4.5em;
 }
 .container-header {
   display: flex;

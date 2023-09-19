@@ -5,20 +5,17 @@ import { RouterView } from 'vue-router';
 </script>
 
 <template>
+  <div>
   <header>
     <NavBar/>
   </header>
   <main>
     <GenresGames/>
-
 </main>
 <RouterView/>
+</div>
 </template>
 
 <style>
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+
 </style>
