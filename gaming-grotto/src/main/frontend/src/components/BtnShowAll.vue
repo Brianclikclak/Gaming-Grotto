@@ -1,5 +1,5 @@
 <template>
-    <button class="btn-show-all">Ver todo</button>
+    <button class="btn-show-all">Show all</button>
 </template>
 <style lang="scss">
 @use '../scss/colors' as c;

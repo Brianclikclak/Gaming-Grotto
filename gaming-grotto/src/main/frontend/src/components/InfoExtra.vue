@@ -4,9 +4,7 @@
       <img class="controller-img" src="../assets/images/gamecontroller.svg" alt="Grotto-Gaming" />
     </div>
       <p class="container-info__text">
-        Grotto Gaming es una excelente forma de descrubir y encontrar juegos que
-        no conocias. Cuentas con la información de todos ellos para darles una
-        oportunidad mas adelante.
+        Grotto Gaming is an excellent way to discover and find games you didn't know about. You have the information on all of them to give them a chance later.
       </p>
   </div>
 </template>

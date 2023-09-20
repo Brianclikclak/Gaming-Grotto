@@ -1,31 +1,52 @@
 <script setup>
-import { ref, onMounted, defineEmits } from "vue";
-import GameDataService from "../services/GameDataService";
-import { useRouter } from "vue-router";
-import NavBar from "../components/NavBar.vue";
+  import axios from 'axios';
+  import { ref, onMounted, defineEmits } from 'vue';
+  import NavBar from '../components/NavBar.vue';
+  import { useRouter } from "vue-router";
+import GameDataService from '../services/GameDataService';
 
-const games = ref([]);
 
-const router = useRouter();
+  const gamesFromRawg = ref({});
 
-const  emit  = defineEmits();
+  
+  const router = useRouter();
+  const apiUrl = 'https://api.rawg.io/api/games?key=376e19295edf49948e86dad1da853b22&date=2023-01-01,2023-06-30&ordering=-added'; 
+  const  emit  = defineEmits();
 const showGameDetails = (game) => {
   emit("show-details", game);
 
-  router.push({ name: "GameDetails", params: { id: game.id } });
+  
+  router.push({ name: 'GameDetailsView', params: { id: game.id } });
+
+
 };
 
 onMounted(async () => {
-  try {
-    const response = await GameDataService.get("api/games");
-    games.value = response.data;
-    console.log(games.value);
+  try{
+    const response = await GameDataService.get(apiUrl);
+    gamesFromRawg.value = response.data;
+    console.log(gamesFromRawg.value);
   } catch (error) {
-    console.error("Error al cargar los juegos:", error);
+    console.error("Error al cargar los juegos:", error)
   }
-});
+})
+  
+  
+  /* const fetchGamesFromRawg = () => {
+    axios.get(apiUrl)
+      .then(response => {
+        gamesFromRawg.value = response.data;
+      })
+      .catch(error => {
+        console.error('Error al obtener datos de RAWG:', error);
+      });
+  };
+  
+  onMounted(() => {
+    fetchGamesFromRawg();
+  }); */
+  </script>
 
-</script>
 
 <template>
     <div>
@@ -33,22 +54,23 @@ onMounted(async () => {
       <div class="main-container">
         <div class="container-header">
           <h3 class="container-header__title">Juegos</h3>
-          <BtnShowAll />
         </div>
         <div class="genres-container">
           <div
-            v-for="game in games"
+            v-for="game in gamesFromRawg.results"
             :key="game.id"
             class="genres-container__action"
             @click="showGameDetails(game)"
           >
-            <img class="image-game" :src="game.image" alt="" />
-            <p class="game-title">{{ game.title }}</p>
+            <img class="image-game" :src="game.background_image" alt="" />
+            <p class="game-title">{{ game.name }}</p>
+            <p></p>
           </div>
         </div>
       </div>
     </div>
   </template>
+   <!-- v-for="game in gamesFromRawg.results" :key="game.id">{{ game.name }} -->
   
 
 <style scoped lang="scss">
@@ -105,6 +127,7 @@ onMounted(async () => {
 .image-game {
   width: 100%;
   border-radius: 20px;
+  height: 80%;
 }
 
 @media screen and (max-width: 768px) {
@@ -115,3 +138,6 @@ onMounted(async () => {
   }
 }
 </style>
+  
+  
+  
