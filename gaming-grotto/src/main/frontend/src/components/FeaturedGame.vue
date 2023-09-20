@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import GameDataService from "../services/GameDataService";
 
+
 const game = ref("");
 
 onMounted(async () => {
@@ -13,6 +14,7 @@ onMounted(async () => {
     console.error("Error al cargar el juego:", error);
   }
 });
+
 </script>
 
 <template>

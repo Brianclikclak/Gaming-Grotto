@@ -22,7 +22,7 @@ onMounted(async () => {
 <template>
     <div class="main-container">
       <div class="container-header">
-        <h3 class="container-header__title">Categorias</h3>
+        <h3 class="container-header__title">Categories</h3>
        <RouterLink to="/category"> <BtnShowAll /></RouterLink>
       </div>
       <div class="genres-container">

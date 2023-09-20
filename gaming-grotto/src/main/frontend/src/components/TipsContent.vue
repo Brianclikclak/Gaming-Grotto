@@ -6,8 +6,8 @@
         <img src="../assets/images/icons/search.svg" alt="" />
       </div>
       <div class="container__text">
-        <h4>Descubre nuevos juegos</h4>
-        <p>Sorprendete con nuevos titulos!</p>
+        <h4>Discover new games</h4>
+        <p>Discover new games</p>
       </div>
     </div>
 
@@ -18,8 +18,8 @@
         <img src="../assets/images/icons/favorite.svg" alt="" />
       </div>
       <div class="container__text">
-        <h4>Añadelos a tus favoritos</h4>
-        <p>y juegalos mas tarde!</p>
+        <h4>Discover new games</h4>
+        <p>Discover new games</p>
       </div>
     </div>
 
@@ -30,8 +30,8 @@
         <img src="../assets/images/icons/checked Box.svg" alt="" />
       </div>
       <div class="container__text">
-        <h4>Mantente al dia</h4>
-        <p>No te pierdas nada!</p>
+        <h4>Stay up to date</h4>
+        <p>Don't miss anything!</p>
       </div>
     </div>
   </div>

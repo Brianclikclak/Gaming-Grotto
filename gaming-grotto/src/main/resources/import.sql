@@ -82,7 +82,7 @@ INSERT INTO game_platform (game_id, platform_id) VALUES (8, 3); -- PC
 INSERT INTO game_platform (game_id, platform_id) VALUES (8, 4); -- Nintendo Switch
 
 -- Asociar 'Red Dead Redemption 2' con las plataformas
-INSERT INTO game_platform (game_id, platform_id) VALUES (INSERTA_EL_ID_DEL_JUEGO_REDEMPTION_2, 1); -- PlayStation
-INSERT INTO game_platform (game_id, platform_id) VALUES (INSERTA_EL_ID_DEL_JUEGO_REDEMPTION_2, 2); -- Xbox
-INSERT INTO game_platform (game_id, platform_id) VALUES (INSERTA_EL_ID_DEL_JUEGO_REDEMPTION_2, 3); -- PC
+INSERT INTO game_platform (game_id, platform_id) VALUES (2, 1); -- PlayStation
+INSERT INTO game_platform (game_id, platform_id) VALUES (2, 2); -- Xbox
+INSERT INTO game_platform (game_id, platform_id) VALUES (2, 3); -- PC
 

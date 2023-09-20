@@ -31,7 +31,7 @@ onMounted(async () => {
 <template>
   <div class="main-container">
     <div class="container-header">
-      <h3 class="container-header__title">Tendencias</h3>
+      <h3 class="container-header__title">Trends</h3>
       <BtnShowAll />
     </div>
     <div class="genres-container">

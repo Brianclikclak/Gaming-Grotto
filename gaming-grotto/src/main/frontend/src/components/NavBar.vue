@@ -13,10 +13,10 @@ import { RouterLink } from 'vue-router';
       src="../assets/images/image 3.svg"
     /></RouterLink>
     <div class="menu">
-      <RouterLink to="/explore">Juegos</RouterLink>
-      <RouterLink to="/category">Generos</RouterLink>
-      <a href="">Plataformas</a>
-      <a href="">Favoritos</a>
+      <RouterLink to="/explore">Games</RouterLink>
+      <RouterLink to="/category">Genres</RouterLink>
+      <RouterLink to="/platform">Platforms</RouterLink>
+      <a href="">Favorites</a>
       <img
         src="../assets/images/Search.svg"
         alt="Search icon"
