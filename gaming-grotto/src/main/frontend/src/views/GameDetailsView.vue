@@ -1,31 +1,42 @@
 <script setup>
-import NavBar from '../components/NavBar.vue';
+import NavBar from "../components/NavBar.vue";
 import GameDataService from "../services/GameDataService";
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, onMounted } from "vue";
+import { useRoute } from "vue-router";
 
 const route = useRoute();
 const gameId = route.params.id;
 
-const games = ref([]);
 const gameDetails = ref({});
-  
+const screenshots = ref([]);
+const screenshotsCount = ref(0);
+const trailers = ref([]);
+const trailersCount = ref(0);
 
-
-const apiUrl = `https://api.rawg.io/api/games/${gameId}?key=376e19295edf49948e86dad1da853b22`;
+const apiUrlGame = `https://api.rawg.io/api/games/${gameId}?key=376e19295edf49948e86dad1da853b22`;
+const apiUrlScreenshots = `https://api.rawg.io/api/games/${gameId}/screenshots?key=376e19295edf49948e86dad1da853b22`;
+const apiUrlTrailer = `https://api.rawg.io/api/games/${gameId}/movies?key=376e19295edf49948e86dad1da853b22`;
 
 onMounted(async () => {
   try {
-    const response = await GameDataService.get(apiUrl);
-    gameDetails.value = response.data;
+    const [gameResponse, screenshotsResponse] = await Promise.all([
+      GameDataService.get(apiUrlGame),
+      GameDataService.get(apiUrlScreenshots),
+      GameDataService.get(apiUrlTrailer)
+    ]);
+
+    gameDetails.value = gameResponse.data;
+    screenshots.value = screenshotsResponse.data.results;
+    screenshotsCount.value = screenshotsResponse.data.count;
+    trailers.value = [trailerResponse.data.results[0]]; // Aquí estamos extrayendo el primer trailer
+    trailersCount.value = 1; // Establecer el recuento de trailers en 1
+    console.log(screenshots.value);
+    console.log(trailers.value);
     console.log(gameDetails.value);
-    console.log(gameDetails.parent_platforms)
   } catch (error) {
     console.error("Error al mostrar detalles del juego:", error);
   }
 });
-
-
 </script>
 <template>
   <div class="main">
@@ -34,8 +45,12 @@ onMounted(async () => {
       class="details-container"
       v-if="gameDetails && Object.keys(gameDetails).length > 0"
     >
-      <img class="back-image" :src="gameDetails.background_image_additional" alt="" />
-      <img class="game-img" :src="gameDetails.background_image" alt="Game Image" />
+      <img class="back-image" :src="gameDetails.background_image" alt="" />
+      <img
+        class="game-img"
+        :src="gameDetails.background_image"
+        alt="Game Image"
+      />
       <div class="game-info">
         <h2 class="game-title">{{ gameDetails.name }}</h2>
 
@@ -50,9 +65,7 @@ onMounted(async () => {
             :key="genres.id"
           >
             {{ genres.name }}</span
-
           >
-          
         </div>
         <p class="game-developer">
           Developer: <span class="">{{ gameDetails.developers[0].name }}</span>
@@ -66,18 +79,41 @@ onMounted(async () => {
           >
             {{ platform.platform.name }}</span
           >
-          
         </div>
       </div>
     </div>
     <div class="about-container">
       <h2 class="about-container__title">About the game</h2>
-      <p class="about-container__description" v-html="gameDetails.description"></p>
+      <p
+        class="about-container__description"
+        v-html="gameDetails.description"
+      ></p>
+    </div>
+    <div class="screenshots-container" >
+        <div class="game-screenshots" v-for="screenshot in screenshots"
+        :key="screenshot.id">
+      <img class="game-screenshot__image"  
+        :src="screenshot.image"
+      />
+    </div>
+    </div>
+
+    <div>
+    <div v-for="(trailer, index) in trailersData.results" :key="index">
+      <h3>{{ trailer.name }}</h3>
+      <img :src="trailer.preview" alt="Trailer Preview" />
+      <div class="trailer-data">
+        <p>480: {{ trailer.data["480"] }}</p>
+        <p>max: {{ trailer.data["max"] }}</p>
+      </div>
     </div>
   </div>
+
+
+
+
+  </div>
 </template>
-
-
 
 <style scoped lang="scss">
 @use "../scss/colors" as c;
@@ -104,7 +140,6 @@ onMounted(async () => {
 }
 .game-img {
   width: 36em;
-  border: 4px solid map-get(c.$colors, "main-orange");
   border-radius: 20px;
   z-index: 2;
 }
@@ -113,7 +148,7 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  backdrop-filter: blur(80px) saturate(30%);
+  backdrop-filter: blur(10px) saturate(80%);
   border-radius: 20px;
   padding: 0 1em;
   z-index: 2;
@@ -160,6 +195,27 @@ onMounted(async () => {
     margin: auto;
   }
 }
+.screenshots-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 1em; */
+    width: 70%;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.game-screenshots {
+  text-align: center;
+    border-radius: 10px;
+    flex: 0 calc(33.33% - 1em);
+    padding-bottom: 1em;
+}
+
+.game-screenshot__image{
+    width: 21.6em;
+    border-radius: 20px;
+    /* height: 80%; */
+}
 
 @media screen and (max-width: 768px) {
   .details-container {
@@ -180,7 +236,21 @@ onMounted(async () => {
     }
   }
   .game-img {
-    width: 100%;
+    width: 21.6em;
   }
+
+  .game-screenshots{
+    display: flex;
+    flex-wrap: wrap;
+    flex: none;
+  }
+ 
+
+@media screen and (max-width: 400px){
+
+  .game-screenshot__image{
+    width: 16em;
+  }
+}
 }
 </style>
