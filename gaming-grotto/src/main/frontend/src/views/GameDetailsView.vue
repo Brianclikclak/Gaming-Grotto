@@ -10,28 +10,30 @@ const gameId = route.params.id;
 const gameDetails = ref({});
 const screenshots = ref([]);
 const screenshotsCount = ref(0);
-const trailers = ref([]);
-const trailersCount = ref(0);
+const movies = ref([]);
+const moviesCount = ref(0);
 
 const apiUrlGame = `https://api.rawg.io/api/games/${gameId}?key=376e19295edf49948e86dad1da853b22`;
 const apiUrlScreenshots = `https://api.rawg.io/api/games/${gameId}/screenshots?key=376e19295edf49948e86dad1da853b22`;
-const apiUrlTrailer = `https://api.rawg.io/api/games/${gameId}/movies?key=376e19295edf49948e86dad1da853b22`;
+const apiUrlMovies = `https://api.rawg.io/api/games/${gameId}/movies?key=376e19295edf49948e86dad1da853b22`;
 
 onMounted(async () => {
   try {
-    const [gameResponse, screenshotsResponse] = await Promise.all([
+    const [gameResponse, screenshotsResponse, moviesResponse] = await Promise.all([
       GameDataService.get(apiUrlGame),
       GameDataService.get(apiUrlScreenshots),
-      GameDataService.get(apiUrlTrailer)
+      GameDataService.get(apiUrlMovies)
     ]);
 
     gameDetails.value = gameResponse.data;
     screenshots.value = screenshotsResponse.data.results;
     screenshotsCount.value = screenshotsResponse.data.count;
-    trailers.value = [trailerResponse.data.results[0]]; // Aquí estamos extrayendo el primer trailer
-    trailersCount.value = 1; // Establecer el recuento de trailers en 1
+    movies.value = moviesResponse.data.results; // Aquí estamos extrayendo el primer trailer
+    moviesCount.value = moviesResponse.data.count[0];
+    /* trailers.value = [trailers.value[0]]; */
+    /* trailersCount.value = 1;  */
     console.log(screenshots.value);
-    console.log(trailers.value);
+    console.log(movies.value[0].data);
     console.log(gameDetails.value);
   } catch (error) {
     console.error("Error al mostrar detalles del juego:", error);
@@ -82,6 +84,7 @@ onMounted(async () => {
         </div>
       </div>
     </div>
+    
     <div class="about-container">
       <h2 class="about-container__title">About the game</h2>
       <p
@@ -89,6 +92,7 @@ onMounted(async () => {
         v-html="gameDetails.description"
       ></p>
     </div>
+
     <div class="screenshots-container" >
         <div class="game-screenshots" v-for="screenshot in screenshots"
         :key="screenshot.id">
@@ -99,13 +103,12 @@ onMounted(async () => {
     </div>
 
     <div>
-    <div v-for="(trailer, index) in trailersData.results" :key="index">
-      <h3>{{ trailer.name }}</h3>
-      <img :src="trailer.preview" alt="Trailer Preview" />
-      <div class="trailer-data">
-        <p>480: {{ trailer.data["480"] }}</p>
-        <p>max: {{ trailer.data["max"] }}</p>
-      </div>
+      <div v-if="movies.length > 0 && movies[0] && movies[0].data">
+      <video controls width="640" height="360">
+    <source :src="movies[0].data.max" type="video/mp4">
+    
+    Tu navegador no soporta la reproducción de videos.
+  </video>
     </div>
   </div>
 
@@ -214,7 +217,7 @@ onMounted(async () => {
 .game-screenshot__image{
     width: 21.6em;
     border-radius: 20px;
-    /* height: 80%; */
+    height: 14em;
 }
 
 @media screen and (max-width: 768px) {
