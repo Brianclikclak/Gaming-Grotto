@@ -19,22 +19,22 @@ const apiUrlMovies = `https://api.rawg.io/api/games/${gameId}/movies?key=376e192
 
 onMounted(async () => {
   try {
-    const [gameResponse, screenshotsResponse, moviesResponse] = await Promise.all([
-      GameDataService.get(apiUrlGame),
-      GameDataService.get(apiUrlScreenshots),
-      GameDataService.get(apiUrlMovies)
-    ]);
+    const [gameResponse, screenshotsResponse, moviesResponse] =
+      await Promise.all([
+        GameDataService.get(apiUrlGame),
+        GameDataService.get(apiUrlScreenshots),
+        GameDataService.get(apiUrlMovies),
+      ]);
 
     gameDetails.value = gameResponse.data;
     screenshots.value = screenshotsResponse.data.results;
     screenshotsCount.value = screenshotsResponse.data.count;
-    movies.value = moviesResponse.data.results; // Aquí estamos extrayendo el primer trailer
+    movies.value = moviesResponse.data.results;
     moviesCount.value = moviesResponse.data.count[0];
-    /* trailers.value = [trailers.value[0]]; */
-    /* trailersCount.value = 1;  */
     console.log(screenshots.value);
-    console.log(movies.value[0].data);
     console.log(gameDetails.value);
+    console.log(movies.value[0].data);
+    
   } catch (error) {
     console.error("Error al mostrar detalles del juego:", error);
   }
@@ -47,7 +47,7 @@ onMounted(async () => {
       class="details-container"
       v-if="gameDetails && Object.keys(gameDetails).length > 0"
     >
-      <img class="back-image" :src="gameDetails.background_image" alt="" />
+      <!-- <img class="back-image" :src="gameDetails.background_image" alt="" /> -->
       <img
         class="game-img"
         :src="gameDetails.background_image"
@@ -72,6 +72,13 @@ onMounted(async () => {
         <p class="game-developer">
           Developer: <span class="">{{ gameDetails.developers[0].name }}</span>
         </p>
+        <div>
+          <p class="game-publishers">Publishers:
+            <span>
+              {{ gameDetails.publishers[0].name }}
+            </span>
+          </p>
+        </div>
         <div class="game-platforms">
           <p>Platforms:</p>
           <span
@@ -84,37 +91,34 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    
+
     <div class="about-container">
-      <h2 class="about-container__title">About the game</h2>
+      <h2 class="about-container__title">Description</h2>
       <p
         class="about-container__description"
         v-html="gameDetails.description"
       ></p>
     </div>
 
-    <div class="screenshots-container" >
-        <div class="game-screenshots" v-for="screenshot in screenshots"
-        :key="screenshot.id">
-      <img class="game-screenshot__image"  
-        :src="screenshot.image"
-      />
-    </div>
+    <div class="screenshots-container">
+      <div
+        class="game-screenshots"
+        v-for="screenshot in screenshots"
+        :key="screenshot.id"
+      >
+        <img class="game-screenshot__image" :src="screenshot.image" />
+      </div>
     </div>
 
     <div>
       <div v-if="movies.length > 0 && movies[0] && movies[0].data">
-      <video controls width="640" height="360">
-    <source :src="movies[0].data.max" type="video/mp4">
-    
-    Tu navegador no soporta la reproducción de videos.
-  </video>
+        <video controls width="640" height="360">
+          <source :src="movies[0].data.max" type="video/mp4" />
+
+          Tu navegador no soporta la reproducción de videos.
+        </video>
+      </div>
     </div>
-  </div>
-
-
-
-
   </div>
 </template>
 
@@ -138,11 +142,12 @@ onMounted(async () => {
   background-size: cover;
   margin-top: 4.6em;
   gap: 5em;
-  padding-top: 20em;
+  padding-top: 8em;
   padding-bottom: 5em;
+  background: radial-gradient(black, transparent);
 }
 .game-img {
-  width: 36em;
+  width: 50%;
   border-radius: 20px;
   z-index: 2;
 }
@@ -150,7 +155,8 @@ onMounted(async () => {
 .game-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
+  line-height: 3em;
   backdrop-filter: blur(10px) saturate(80%);
   border-radius: 20px;
   padding: 0 1em;
@@ -159,15 +165,17 @@ onMounted(async () => {
   .game-title {
     color: map-get(c.$colors, "white");
     font-size: 4em;
+    margin-bottom: 1em;
   }
   .game-year,
   .game-genres,
   .game-developer,
-  .game-platforms {
+  .game-platforms,
+  .game-publishers {
     display: flex;
     flex-wrap: wrap;
     gap: 0.3em;
-    font-size: 2em;
+    font-size: 1.5em;
     color: map-get(c.$colors, "main-orange");
     .game-platform__names,
     span {
@@ -199,28 +207,31 @@ onMounted(async () => {
   }
 }
 .screenshots-container {
-    display: flex;
-    flex-wrap: wrap;
-    /* gap: 1em; */
-    width: 70%;
-    margin: auto;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  /* gap: 1em; */
+  width: 70%;
+  margin: auto;
+  justify-content: space-between;
 }
 
 .game-screenshots {
   text-align: center;
-    border-radius: 10px;
-    flex: 0 calc(33.33% - 1em);
-    padding-bottom: 1em;
+  border-radius: 10px;
+  flex: 0 calc(33.33% - 1em);
+  padding-bottom: 1em;
 }
 
-.game-screenshot__image{
-    width: 21.6em;
-    border-radius: 20px;
-    height: 14em;
+.game-screenshot__image {
+  width: 21.6em;
+  border-radius: 20px;
+  height: 14em;
 }
 
 @media screen and (max-width: 768px) {
+  .game-title{
+    font-size: 3em;
+  }
   .details-container {
     padding-top: 3em;
   }
@@ -229,31 +240,31 @@ onMounted(async () => {
   }
   .game-info {
     width: 100%;
+    .game-title,
     .game-year,
     .game-genre,
     .game-developer,
-    .game-platforms {
+    .game-platforms,
+    .game-publishers {
       display: flex;
       flex-direction: column;
-      font-size: 2.5em;
+      font-size: 1.5em;
     }
   }
   .game-img {
-    width: 21.6em;
+    width: 90%;
   }
 
-  .game-screenshots{
+  .game-screenshots {
     display: flex;
     flex-wrap: wrap;
     flex: none;
   }
- 
 
-@media screen and (max-width: 400px){
-
-  .game-screenshot__image{
-    width: 16em;
+  @media screen and (max-width: 400px) {
+    .game-screenshot__image {
+      width: 16em;
+    }
   }
-}
 }
 </style>
