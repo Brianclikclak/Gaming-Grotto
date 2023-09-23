@@ -110,9 +110,9 @@ onMounted(async () => {
       </div>
     </div>
 
-    <div>
-      <div v-if="movies.length > 0 && movies[0] && movies[0].data">
-        <video controls width="640" height="360">
+    <div class="game-video-container">
+      <div v-if="movies.length  > 0 && movies[0] && movies[0].data">
+        <video class="game-video" controls width="640" height="360">
           <source :src="movies[0].data.max" type="video/mp4" />
 
           Tu navegador no soporta la reproducción de videos.
@@ -226,6 +226,15 @@ onMounted(async () => {
   width: 21.6em;
   border-radius: 20px;
   height: 14em;
+}
+.game-video{
+  width: 100%;
+  margin: auto;
+}
+.game-video-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {
