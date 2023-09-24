@@ -3,17 +3,20 @@ import BtnShowAll from "./BtnShowAll.vue";
 import { ref, onMounted } from "vue";
 import GameDataService from "../services/GameDataService";
 
-const genres = ref("");
+const genres = ref([]);
 
-onMounted(async () => {
+async function fetchGenres() {
   try {
-    const response = await GameDataService.get("api/genres"); // Reemplaza '6' con el ID del juego que deseas obtener
-    genres.value = response.data; // Almacenamos todos los datos del juego en gameData
+    const response = await GameDataService.get('https://api.rawg.io/api/genres?key=376e19295edf49948e86dad1da853b22');
+    genres.value = response.data.results;
     console.log(genres.value);
   } catch (error) {
-    console.error("Error al cargar los juegos:", error);
+    console.error('Error al cargar los géneros:', error);
   }
-});
+}
+
+onMounted(fetchGenres);
+
 </script>
 
 <template>
@@ -23,7 +26,7 @@ onMounted(async () => {
       </div>
       <div class="genres-container">
         <div v-for="genre in genres" :key="genre.id" class="genres-container__action">
-          <img class="image-game" :src="genre.icon_url" alt="" />
+          <img class="image-game" :src="genre.image_background" alt="" />
           <div class="genre-name">{{ genre.name }}</div>
         </div>
       </div>
@@ -69,7 +72,8 @@ onMounted(async () => {
     position: relative; 
   
     .image-game {
-      width: 100%;
+      width: 23em;
+      height: 14em;
       opacity: 0.6;
       border-radius: 20px;
     }
@@ -92,6 +96,16 @@ onMounted(async () => {
       flex: 0 calc(100% - 2em);
       margin: auto;
       flex-wrap: nowrap;
+    }
+    .image-game{
+      width: 100%;
+    }
+    
+  }
+
+  @media screen and (max-width: 400px){
+    .image-game{
+      width: 10em;
     }
   }
   </style>
