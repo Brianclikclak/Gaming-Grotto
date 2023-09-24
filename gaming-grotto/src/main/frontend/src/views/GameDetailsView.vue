@@ -4,6 +4,7 @@ import GameDataService from "../services/GameDataService";
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
+
 const route = useRoute();
 const gameId = route.params.id;
 
@@ -34,7 +35,6 @@ onMounted(async () => {
     console.log(screenshots.value);
     console.log(gameDetails.value);
     console.log(movies.value[0].data);
-    
   } catch (error) {
     console.error("Error al mostrar detalles del juego:", error);
   }
@@ -55,7 +55,9 @@ onMounted(async () => {
       />
       <div class="game-info">
         <h2 class="game-title">{{ gameDetails.name }}</h2>
-
+        <p class="game-rating">
+          Rating: <span>{{ gameDetails.rating }}</span>
+        </p>
         <p class="game-year">
           Release date: <span>{{ gameDetails.released }}</span>
         </p>
@@ -73,7 +75,8 @@ onMounted(async () => {
           Developer: <span class="">{{ gameDetails.developers[0].name }}</span>
         </p>
         <div>
-          <p class="game-publishers">Publishers:
+          <p class="game-publishers">
+            Publishers:
             <span>
               {{ gameDetails.publishers[0].name }}
             </span>
@@ -110,14 +113,19 @@ onMounted(async () => {
       </div>
     </div>
 
-    <div class="game-video-container">
-      <div v-if="movies.length  > 0 && movies[0] && movies[0].data">
-        <video class="game-video" controls width="640" height="360">
-          <source :src="movies[0].data.max" type="video/mp4" />
+   
 
-          Tu navegador no soporta la reproducción de videos.
-        </video>
-      </div>
+    
+
+    <div
+      class="game-video-container"
+      v-if="movies.length > 0 && movies[0] && movies[0].data"
+    >
+      <video class="game-video" controls width="80%" height="500">
+        <source :src="movies[0].data.max" type="video/mp4" />
+
+        
+      </video>
     </div>
   </div>
 </template>
@@ -171,6 +179,7 @@ onMounted(async () => {
   .game-genres,
   .game-developer,
   .game-platforms,
+  .game-rating,
   .game-publishers {
     display: flex;
     flex-wrap: wrap;
@@ -227,18 +236,22 @@ onMounted(async () => {
   border-radius: 20px;
   height: 14em;
 }
-.game-video{
-  width: 100%;
-  margin: auto;
-}
-.game-video-container{
+.game-video-container {
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 80%; /* Cambia el ancho a 80% */
+  margin: auto;
+  text-align: center; /* Alinea el texto en el centro */
+}
+
+.game-video {
+  width: 100%; /* El video ocupa el 100% del contenedor */
+  max-width: 100%; /* Evita que el video sea más ancho que su tamaño original */
+  height: auto; /* Mantiene la relación de aspecto original */
 }
 
 @media screen and (max-width: 768px) {
-  .game-title{
+  .game-title {
     font-size: 3em;
   }
   .details-container {
