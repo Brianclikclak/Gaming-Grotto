@@ -17,6 +17,7 @@ import { RouterLink } from 'vue-router';
       <RouterLink to="/category">Genres</RouterLink>
       <RouterLink to="/platform">Platforms</RouterLink>
       <a href="">Favorites</a>
+
       <img
         src="../assets/images/Search.svg"
         alt="Search icon"
