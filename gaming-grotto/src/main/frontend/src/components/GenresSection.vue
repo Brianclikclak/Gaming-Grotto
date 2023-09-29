@@ -6,7 +6,7 @@ import GameDataService from "../services/GameDataService";
 const genres = ref([]);
 const genresFirstSix = ref([])
 
-onMounted(async () => {
+ onMounted(async () => {
   try {
     const response = await GameDataService.get("https://api.rawg.io/api/genres?key=376e19295edf49948e86dad1da853b22");
     genres.value = response.data.results;
@@ -22,6 +22,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  
     <div class="main-container">
       <div class="container-header">
         <h3 class="container-header__title">Categories</h3>

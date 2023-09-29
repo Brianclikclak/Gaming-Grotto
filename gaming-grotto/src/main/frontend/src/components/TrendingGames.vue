@@ -129,6 +129,7 @@ onMounted(async () => {
 
 .game-trend-img{
   width: 100%;
+  background-color: map-get(c.$colors, "dark-black");
 }
 
 @media screen and (max-width: 768px) {

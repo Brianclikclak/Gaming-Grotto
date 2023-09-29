@@ -7,8 +7,8 @@ const game = ref("");
 
 onMounted(async () => {
   try {
-    const response = await GameDataService.get("api/games/6"); // Reemplaza '6' con el ID del juego que deseas obtener
-    game.value = response; // Almacenamos todos los datos del juego en gameData
+    const response = await GameDataService.get("api/games/6"); 
+    game.value = response; 
     console.log(game.value.data);
   } catch (error) {
     console.error("Error al cargar el juego:", error);
@@ -27,7 +27,7 @@ onMounted(async () => {
     <div class="game-info">
       <h2 class="game-container__title">{{ game.title }}</h2>
       <p>{{ game.description }}</p>
-      <!-- Agrega aquí otros elementos para mostrar otros datos del juego según tus necesidades -->
+      
     </div>
   </div>
 </template>

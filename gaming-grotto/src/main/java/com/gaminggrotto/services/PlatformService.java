@@ -19,7 +19,7 @@ public class PlatformService {
 
     public List<Game> getGamesByPlatform(String PlatformName) {
         Platform platform = platformRepository.findByName(PlatformName)
-                .orElseThrow(() -> new PlatformNotFoundException("Platform not found by name " + PlatformName));
+                .orElseThrow(() -> new PlatformNotFoundException("Game not found by name " + PlatformName));
         return platform.getGames();
     }
 }
