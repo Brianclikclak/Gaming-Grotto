@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gaminggrotto.models.Game;
-import com.gaminggrotto.models.dto.RawgGame;
+
 import com.gaminggrotto.services.GameService;
-import com.gaminggrotto.services.RawgService;
 
 import lombok.AllArgsConstructor;
 
@@ -26,16 +25,10 @@ import lombok.AllArgsConstructor;
 public class GameController {
 
     private final GameService gameService;
-    private final RawgService rawgService;
 
     @GetMapping
     public List<Game> getAllGames() {
         return gameService.findAll();
-    }
-
-    @GetMapping("/rawg")
-    public List<RawgGame> getGamesFromRawg() {
-        return rawgService.fetchGames();
     }
 
     @GetMapping("/{id}")

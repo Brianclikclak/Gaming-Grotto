@@ -3,7 +3,7 @@ import { ref, onMounted, defineEmits } from "vue";
 import NavBar from "../components/NavBar.vue";
 import { useRouter } from "vue-router";
 import GameDataService from "../services/GameDataService";
-import { getGameDetailById } from "../services/RawgService";
+
 
 const gamesFromRawg = ref({});
 
