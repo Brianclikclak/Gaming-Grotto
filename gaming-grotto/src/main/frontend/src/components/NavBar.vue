@@ -45,7 +45,7 @@ import { RouterLink } from 'vue-router';
   align-items: center;
   justify-content: space-between;
   background: map-get(c.$colors, "dark-black");
-  margin-top: -10px;
+  margin-top: -9px;
   top: 0;
   z-index: 3;
   transition: .2s; 
