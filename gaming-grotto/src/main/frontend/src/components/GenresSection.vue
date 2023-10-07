@@ -10,7 +10,7 @@ const genresFirstSix = ref([])
   try {
     const response = await GameDataService.get("https://api.rawg.io/api/genres?key=376e19295edf49948e86dad1da853b22");
     genres.value = response.data.results;
-    genresFirstSix.value = genres.value.slice(0, 6);
+    genresFirstSix.value = genres.value.slice(0, 9);
     console.log(genres.value);
     console.log(genresFirstSix.value);
   } catch (error) {
