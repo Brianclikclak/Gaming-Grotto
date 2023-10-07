@@ -23,7 +23,7 @@ onMounted(async () => {
   try {
     const response = await GameDataService.get(apiUrl);
     games.value = response.data.results;
-    gamesFirstSix.value = games.value.slice(0, 6)
+    gamesFirstSix.value = games.value.slice(0, 9)
     console.log(games.value);
     console.log(gamesFirstSix.value);
   } catch (error) {
